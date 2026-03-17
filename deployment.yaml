@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: photo-studio
-          image: norahbiju/photostudio-node:v1
+          image: iyask/photo-app:v1.1.0
           env:
             - name: MONGODB_AUTH_URI
               valueFrom:
