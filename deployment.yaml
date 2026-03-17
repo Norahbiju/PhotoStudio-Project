@@ -16,6 +16,9 @@ spec:
       containers:
         - name: photo-studio
           image: norahbiju/photostudio-node:v1
+          envFrom:
+            - configMapRef:
+                name: photo-studio-config
           ports:
             - containerPort: 3000
 ---
