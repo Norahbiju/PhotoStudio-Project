@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  photo-studio-deployment
+  namespace: photostudio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: photo-studio
+  template:
+    metadata:
+      labels:
+        app: photo-studio
+    spec:
+      containers:
+        - name: photo-studio
+          image: norahbiju/photostudio-node:v1
+          ports:
+            - containerPort: 3000
+---
+ 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  namespace: photostudio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb  
+    spec:  
+      containers:
+        - name: mongodb
+          image: mongo:latest
+          ports:
+            - containerPort: 27017
+ 
