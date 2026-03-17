@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  photo-studio-deployment
+  name: photo-studio-deployment
   namespace: photostudio
 spec:
   replicas: 2
@@ -19,18 +19,17 @@ spec:
           env:
             - name: MONGODB_AUTH_URI
               valueFrom:
-              secretKeyRef:
-                name: app-secrets
-                key: MONGODB_AUTH_URI
+                secretKeyRef:
+                  name: app-secrets
+                  key: MONGODB_AUTH_URI
             - name: MONGODB_URI
               valueFrom:
-              secretKeyRef:
-                name: app-secrets
-                key: MONGODB_URI
+                secretKeyRef:
+                  name: app-secrets
+                  key: MONGODB_URI
           ports:
             - containerPort: 3000
 ---
- 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -44,11 +43,10 @@ spec:
   template:
     metadata:
       labels:
-        app: mongodb  
-    spec:  
+        app: mongodb
+    spec:
       containers:
         - name: mongodb
           image: mongo:latest
           ports:
             - containerPort: 27017
- 
